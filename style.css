@@ -129,6 +129,7 @@ body {
         align-items: center;
     }
 
+
     .menu-toggle {
         display: block;
     }
@@ -170,7 +171,8 @@ body {
 
     .social_box {
         margin-top: 15px;
-        text-align: center;
+        text-align: right;
+        width: 100%;
     }
 }
 
@@ -255,6 +257,7 @@ ul {
 
     .intro p {
         font-size: 1.1rem;
+        text-align: justify;
     }
 }
 
@@ -332,6 +335,7 @@ ul {
     font-size: 1.1rem;
     color: #444;
     line-height: 1.6;
+    text-align: justify;
 }
 
 /* Values Section */
@@ -364,6 +368,7 @@ ul {
     margin-bottom: 15px;
     font-size: 1.1rem;
     color: #444;
+    text-align: justify;
 }
 
 .values_description ul li strong {
@@ -527,6 +532,7 @@ ul {
     background-color: #fff;
     transform: rotateY(180deg);
     padding: 10px;
+    text-align: justify;
 }
 
 
