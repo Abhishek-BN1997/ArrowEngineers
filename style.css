@@ -109,7 +109,7 @@ body {
 }
 
 /* Mobile Menu Toggle */
-.menu-toggle {
+.menu-toggle { 
     display: none;
     background: none;
     border: none;
@@ -119,28 +119,34 @@ body {
     position: absolute;
     top: 15px;
     right: 15px;
+    z-index: 10;
+}
+
+/* Cancel Button for Navbar */
+.menu-cancel {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    align-self: flex-end;
+    margin-bottom: 15px;
 }
 
 /* Mobile Responsive Styling */
 @media (max-width: 768px) {
-    .header_top_container {
-        flex-direction: column;
-        text-align: center;
-        align-items: center;
-    }
-
-
     .menu-toggle {
         display: block;
     }
 
     .navbar {
-        display: none; /* Initially hide the navbar */
+        display: none;
         flex-direction: column;
         position: absolute;
         top: 0;
         right: 0;
-        width: 70%; /* Adjust width for spacing */
+        width: 70%;
         height: 100vh;
         background-color: black;
         gap: 15px;
@@ -149,6 +155,7 @@ body {
         justify-content: flex-start;
         align-items: flex-start;
         transition: transform 0.3s ease-in-out;
+        z-index: 9;
     }
 
     .navbar.active {
@@ -176,7 +183,6 @@ body {
     }
 }
 
-
 /* Hero Section Image */
 .scrole-section {
     height: 20rem;
@@ -185,6 +191,40 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    position: relative; /* Ensure content can be positioned on the image */
+    overflow: hidden; /* Prevent content overflow */
+}
+
+/* Tagline Style */
+.scrole-tagline {
+    position: absolute; /* Overlay text on the image */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust positioning */
+    font-size: 2.5rem; /* Large font size */
+    font-weight: bold;
+    text-align: center;
+
+    /* Light Color with Text Shadow */
+    color: #E2DFD2; /* White text */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Subtle shadow for contrast */
+
+    /* Animation */
+    opacity: 0; /* Initial state */
+    animation: fadeInText 2s ease-in-out forwards;
+}
+
+
+/* Fade-in Animation */
+@keyframes fadeInText {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -60%); /* Slightly higher initially */
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%); /* Final position */
+    }
 }
 
 /* Mobile Adjustments for Hero Image */
@@ -194,14 +234,11 @@ body {
         background-size: cover;
     }
 
-    .header_logo {
-        width: 100px;
-    }
-
-    .nav_item a {
-        font-size: 0.9rem;
+    .scrole-tagline {
+        font-size: 1.8rem; /* Smaller font size for smaller screens */
     }
 }
+
 
 /* Further adjustments to the text in the header */
 .header_top_container span {
@@ -229,78 +266,68 @@ ul {
     align-items: center;
     justify-content: space-between;
     margin: 30px 0;
-    background-color: #f4f4f4;
     padding: 20px;
-    flex-wrap: wrap; /* Allows wrapping on smaller screens */
-    overflow: hidden; /* Ensures the moving image doesn't overflow */
+    background-color: #f4f4f4;
+    flex-wrap: wrap; /* Allows wrapping for smaller screens */
 }
 
-/* Make the left and right sections have equal width on larger screens */
 .intro > div {
-    width: 45%;
+    width: 45%; /* Equal width for both sections */
 }
 
-/* Apply animation to the right section's image */
-.intro .rightsection img {
-    width: 100%; /* Makes the image responsive */
-    height: auto; /* Maintains aspect ratio */
-    object-fit: contain;
-    display: block;
-    border-radius: 5px; /* Optional: rounded corners */
-    animation: moveRightToLeft 2s ease-in-out; /* 2-second animation */
-}
-
-/* Style for the heading inside the intro */
-.intro .heading h2 {
+.intro .leftsection .heading h2 {
     font-size: 2rem;
     color: #333;
     margin-bottom: 10px;
+    line-height: 1.5; /* Improved readability */
 }
 
-.intro .heading span {
+.intro .leftsection .heading span {
     color: #da7426; /* Highlight the brand name */
 }
 
-/* Add responsive breakpoints */
+.intro .leftsection p {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.6;
+    text-align: justify; /* Align text for a polished look */
+}
+
+.intro .rightsection img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 5px; /* Optional rounded corners */
+}
+
 @media (max-width: 1024px) {
     .intro {
-        flex-direction: column; /* Stack items vertically */
+        flex-direction: column;
         text-align: center;
     }
 
     .intro > div {
-        width: 100%; /* Full-width sections */
+        width: 100%; /* Sections take full width */
         margin-bottom: 20px;
     }
 
-    .intro .heading h2 {
+    .intro .leftsection .heading h2 {
         font-size: 1.8rem;
     }
 
-    .intro p {
-        font-size: 1.1rem;
+    .intro .leftsection p {
+        font-size: 1rem;
         text-align: justify;
-    }
-
-    .intro .rightsection img {
-        width: 90%; /* Slight padding for smaller screens */
-        margin: 0 auto;
     }
 }
 
 @media (max-width: 768px) {
-    .intro .heading h2 {
+    .intro .leftsection .heading h2 {
         font-size: 1.5rem;
     }
 
-    .intro p {
-        font-size: 1rem;
-        text-align: center;
-    }
-
-    .intro .rightsection img {
-        width: 100%; /* Image adjusts fully for smaller screens */
-        margin: 0 auto;
+    .intro .leftsection p {
+        font-size: 0.95rem;
     }
 }
 
@@ -309,21 +336,14 @@ ul {
         padding: 15px;
     }
 
-    .intro .heading h2 {
+    .intro .leftsection .heading h2 {
         font-size: 1.3rem;
     }
 
-    .intro p {
+    .intro .leftsection p {
         font-size: 0.9rem;
-        margin-bottom: 15px;
-    }
-
-    .intro .rightsection img {
-        width: 100%; /* Ensure the image remains responsive */
-        height: auto; /* Maintain aspect ratio */
     }
 }
-
 
 /* About section video and text layout */
 .about_content {
@@ -598,8 +618,6 @@ ul {
         padding: 15px 10px;
     }
 }
-
-
 
 .clients {
     max-width: 90vw;
@@ -970,8 +988,6 @@ ul {
 .whatsapp_chat a:hover {
     background-color: #128c7e;
 }
-
-
 
 .footer_section {
     background-color: black;

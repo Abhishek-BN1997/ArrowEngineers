@@ -29,15 +29,17 @@
                 </button>
     
                 <div class="contact_nav">
+                    <button class="menu-toggle" onclick="toggleMenu()">☰</button> <!-- Open Menu Button -->
                     <nav class="nav_exp">
-                        <ul class="navbar">
-                            <li class="nav_item"><a href="#" class="nav-link">HOME</a></li>
+                        <ul class="navbar" id="navbar">
+                            <button class="menu-cancel" onclick="toggleMenu()">✖</button> <!-- Cancel Button -->
+                            <li class="nav_item"><a href="/" class="nav-link">HOME</a></li>
                             <li class="nav_item"><a href="#about-us" class="nav-link">ABOUT</a></li>
                             <li class="nav_item"><a href="#service_section" class="nav-link">SERVICES</a></li>
                             <li class="nav_item"><a href="#contact_us" class="nav-link">CONTACT US</a></li>
                         </ul>
                     </nav>
-                </div>
+                </div>                
     
                 <div class="social_box">
                     <a href=""><i class="fa-brands fa-facebook"></i></a>
@@ -49,11 +51,13 @@
         </div>
     </header>
     
-        <section class="scrole-section">
-            <div class="section_item">
-
-            </div>
-        </section>
+    
+    <section class="scrole-section">
+        <div class="section_item">
+            <h1 class="scrole-tagline">Wired for Success, Driven by Innovation.</h1>
+        </div>
+    </section>
+    
 
         <div class="intro">
             <div class="leftsection">
@@ -309,7 +313,7 @@
                                 <div class="flip-box-inner">
                                     <div class="flip-box-front">
                                         <div class="box_img">
-                                            <img src="./images/arrowService10.jpg" alt="Premium Villas"> 
+                                            <img src="./images/arrowService10.png" alt="Premium Villas"> 
                                             <h5 class="service-heading">Diesel Generator</h5>
                                         </div>
                                     </div>
@@ -366,43 +370,36 @@
             <div class="mySlides_fade">
                 <div class="numbertext">1 / 7</div>
                 <img src="./images/arrowimage2.jpg" style="width: 100%;">
-                <div class="text">Caption One</div>
             </div>
     
             <div class="mySlides_fade">
                 <div class="numbertext">2 / 7</div>
                 <img src="./images/arrowimage3.jpg" style="width: 100%;">
-                <div class="text">Caption Two</div>
             </div>
     
             <div class="mySlides_fade">
                 <div class="numbertext">3 / 7</div>
                 <img src="./images/arrowimage5.png" style="width: 100%;">
-                <div class="text">Caption Three</div>
             </div>
 
             <div class="mySlides_fade">
                 <div class="numbertext">4 / 7</div>
                 <img src="./images/arrowimage4.png" style="width: 100%;">
-                <div class="text">Caption Three</div>
             </div>
 
             <div class="mySlides_fade">
                 <div class="numbertext">5 / 7</div>
                 <img src="./images/arrowimage1.png" style="width: 100%;">
-                <div class="text">Caption Three</div>
             </div>
 
             <div class="mySlides_fade">
                 <div class="numbertext">6 / 7</div>
                 <img src="./images/arrowimage6.png" style="width: 100%;">
-                <div class="text">Caption Three</div>
             </div>
 
             <div class="mySlides_fade">
                 <div class="numbertext">7 / 7</div>
                 <img src="./images/arrowimage7.png" style="width: 100%;">
-                <div class="text">Caption Three</div>
             </div>
     
             <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
@@ -570,10 +567,23 @@ const duplicateLogos = () => {
 
 // Call the function to duplicate logos
 duplicateLogos();
+const menuToggle = document.querySelector('.menu-toggle');
+const navbar = document.querySelector('.navbar');
 
-document.querySelector('.menu-toggle').addEventListener('click', () => {
-    document.querySelector('.navbar').classList.toggle('active');
+menuToggle.addEventListener('click', () => {
+    navbar.classList.toggle('active');
+    // Toggle between the 'bars' icon and the 'times' icon
+    menuToggle.innerHTML = navbar.classList.contains('active') 
+        ? '<i class="fa fa-times"></i>' 
+        : '<i class="fa fa-bars"></i>';
+
+
 });
+
+function toggleMenu() {
+    const navbar = document.getElementById("navbar");
+    navbar.classList.toggle("active");
+}
 
     </script>
 
