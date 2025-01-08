@@ -27,6 +27,7 @@ body {
 }
 
 /* Header and layout */
+/* General Header and Layout */
 .head_top {
     padding: 15px 0;
     background-color: black;
@@ -37,21 +38,24 @@ body {
     justify-content: space-between;
     align-items: center;
     color: white;
-    height: 60px;
+    height: auto;
     padding: 0 20px;
+    flex-wrap: wrap; /* Ensures wrapping for smaller screens */
 }
 
-/* Header logo */
+/* Header Logo */
 .header_logo {
-    height: 57px;
-    width: 130px;
-    object-fit: cover;
+    max-height: 100px;
+    width: auto;
+    object-fit: contain; /* Ensures logo maintains aspect ratio */
+    float: left; /* Aligns logo to the left */
 }
 
 /* Navigation Menu */
 .navbar {
     display: flex;
     gap: 40px;
+    flex-wrap: wrap;
 }
 
 .nav_item {
@@ -68,43 +72,28 @@ body {
     color: #da7426;
 }
 
-/* Social Media Icons */
-.social_box a {
-    color: white;
-    margin-left: 15px;
-    font-size: 1.2rem;
-}
-
-.social_box a:hover {
-    color: #da7426;
-}
-
 /* Mobile Responsiveness for Header */
 @media (max-width: 768px) {
     .header_top_container {
         flex-direction: column;
-        justify-content: center;
-        text-align: center;
+        align-items: flex-start; /* Align content to the left */
+        text-align: left; /* Align text to the left */
     }
 
     .navbar {
         flex-direction: column;
-        gap: 20px;
+        gap: 15px;
         margin-top: 10px;
+        width: 100%;
     }
 
     .navbar li {
         margin: 0;
+        text-align: left;
     }
 
-    .social_box {
-        margin-top: 10px;
-        text-align: center;
-    }
-
-    .social_box a {
-        margin-left: 10px;
-        font-size: 1.5rem;
+    .menu-toggle {
+        align-self: flex-end;
     }
 }
 
@@ -175,13 +164,18 @@ body {
         display: block;
         width: 100%;
     }
-
-    .social_box {
-        margin-top: 15px;
-        text-align: right;
-        width: 100%;
-    }
 }
+
+/* Styling the h5 tag inside .tagline */
+.tagline h5 {
+    font-family: 'Lora', serif; /* Elegant serif font for a refined feel */
+    font-size: 1rem; /* Larger font size for prominence */
+    color: white; /* Change color to a brand accent color */
+    letter-spacing: 1px; /* Slight letter spacing for readability */
+    margin: 0; /* Remove margin */
+    padding: 10px 0; /* Add padding for spacing */
+}
+
 
 /* Hero Section Image */
 .scrole-section {
@@ -193,38 +187,6 @@ body {
     background-position: center;
     position: relative; /* Ensure content can be positioned on the image */
     overflow: hidden; /* Prevent content overflow */
-}
-
-/* Tagline Style */
-.scrole-tagline {
-    position: absolute; /* Overlay text on the image */
-    top: 50%; /* Center vertically */
-    left: 50%; /* Center horizontally */
-    transform: translate(-50%, -50%); /* Adjust positioning */
-    font-size: 2.5rem; /* Large font size */
-    font-weight: bold;
-    text-align: center;
-
-    /* Light Color with Text Shadow */
-    color: #E2DFD2; /* White text */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Subtle shadow for contrast */
-
-    /* Animation */
-    opacity: 0; /* Initial state */
-    animation: fadeInText 2s ease-in-out forwards;
-}
-
-
-/* Fade-in Animation */
-@keyframes fadeInText {
-    0% {
-        opacity: 0;
-        transform: translate(-50%, -60%); /* Slightly higher initially */
-    }
-    100% {
-        opacity: 1;
-        transform: translate(-50%, -50%); /* Final position */
-    }
 }
 
 /* Mobile Adjustments for Hero Image */
